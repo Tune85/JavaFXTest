@@ -19,6 +19,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
+import static java.lang.Math.random;
+
 public class Main extends Application
 {
     @Override
@@ -32,7 +34,10 @@ public class Main extends Application
     private void drawSomething(Stage primaryStage)
     {
         Group root = new Group();
-        Scene scene = new Scene(root, 800, 600, Color.BLACK);
+        int width = 800;
+        int height = 800;
+
+        Scene scene = new Scene(root, width, height, Color.BLACK);
         primaryStage.setScene(scene);
 
         Rectangle colors = new Rectangle(scene.getWidth(), scene.getHeight(),
@@ -56,8 +61,8 @@ public class Main extends Application
             circle.setStrokeType(StrokeType.OUTSIDE);
             circle.setStroke(Color.web("white", 0.16));
             circle.setStrokeWidth(4);
-            circle.setTranslateX(i*18);
-            circle.setTranslateY(i*15);
+            circle.setTranslateX(random()*width);
+            circle.setTranslateY(random()*height);
             circles.getChildren().add(circle);
         }
         circles.setEffect(new BoxBlur(10, 10, 3));
